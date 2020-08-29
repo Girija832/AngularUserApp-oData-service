@@ -1,0 +1,22 @@
+<div class="login-form">
+    <mat-card>
+        <h5 class="text-center">Sign in</h5>
+        <form [formGroup] = "loginForm" (ngSubmit) = "loginUser()">
+            <mat-form-field appearance="legacy" class="full-width">
+                <mat-label>Userid</mat-label>
+                <input matInput formControlName="userid">
+                <mat-error *ngIf="loginForm.controls['userid'].errors?.required">Userid required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="legacy" class="full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password">
+                <mat-error *ngIf="loginForm.controls['password'].errors?.required">Password required</mat-error>
+            </mat-form-field>
+            <div *ngIf="isLoginError">
+                <p class="error-text text-center">{{errMessage}}</p>
+            </div>
+            <button type="submit" mat-stroked-button color="primary" class="custom-btn full-width" [disabled] = "!loginForm.valid" >SIGN
+                IN</button> 
+        </form>
+    </mat-card>
+</div>
